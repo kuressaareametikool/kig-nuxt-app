@@ -12,29 +12,4 @@ export function polar(angle: number, radius: number): { x: number; y: number } {
   };
 }
 
-// export function arcpath(
-//   startAngle: number,
-//   endAngle: number,
-//   innerRadius: number,
-//   outerRadius: number,
-//   cornerRadius: number
-// ): string | null {
-//   //@ts-ignore
-//   const args = {
-//     startAngle: deg2rad(startAngle),
-//     endAngle: deg2rad(endAngle),
-//     innerRadius,
-//     outerRadius,
-//     cornerRadius,
-//   };
-//   console.log(
-//     arc({
-//       innerRadius: 0,
-//       outerRadius: 100,
-//       startAngle: 0,
-//       endAngle: Math.PI / 2,
-//     })()
-//   );
-//   //const path = arc(args)();
-//   return "";
-// }
+const hsl = (h, s, l = 50, a = 1) => `hsl(${h},${s}%,${l}%,${a})`;
