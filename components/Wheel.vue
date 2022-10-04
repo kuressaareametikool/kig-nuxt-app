@@ -4,6 +4,8 @@ import { arc } from "d3";
 // const d = arcpath(0, 10, 50, 100, 4);
 // console.log(d);
 
+const icons = ["https://api.iconify.design/iconoir:emoji-look-bottom.svg"];
+
 const hsl = (h, s, l = 50, a = 1) => `hsl(${h},${s}%,${l}%,${a})`;
 const d = arc()
   .cornerRadius(10)
@@ -24,19 +26,19 @@ const sectors = Array.from({ length: count }).map((_, i) => {
     .startAngle(deg2rad(currentAngle))
     .endAngle(deg2rad(currentAngle + sector))();
   const fill = hsl(i * 10, 100, 50);
-  return { d, fill };
+  const point = polar(currentAngle + sector / 2, 50 + (100 - 50) / 2);
+  return { d, fill, point };
 });
 console.log(sectors);
 </script>
 <template>
   <svg width="300" height="300" class="border border-blue-500">
     <g transform="translate(150,150)">
-      <path
-        v-for="sector in sectors"
-        :d="sector.d"
-        :fill="sector.fill"
-        stroke="black"
-      />
+      <g v-for="sector in sectors">
+        <path :d="sector.d" :fill="sector.fill" stroke="black" />
+        <circle :cx="sector.point.x" :cy="sector.point.y" r="2" />
+        <image :x="sector.point.x" :y="sector.point.y" :href="icons[0]" />
+      </g>
       <!-- <path :d="d2" stroke="red" fill="none" /> -->
     </g>
   </svg>
