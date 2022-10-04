@@ -1,11 +1,10 @@
 <template>
-  <div class="bg-white min-h-screen flex flex-col">
-    <div class="flex gap-4 justify-around py-6 bg-amber-100">
-      <NuxtLink to="/" class="underline">Esimene</NuxtLink>
-      <NuxtLink to="/second" class="underline">Teine</NuxtLink>
-      <NuxtLink to="/bla" class="underline">bla</NuxtLink>
-    </div>
-    <div class="p-4 flex-1 flex flex-col">
+  <div>
+    <!-- <img src="/assets/screenshot.jpeg" class="fixed inset-0 w-16" /> -->
+    <div class="bg-black/60 border fixed inset-0">aaa</div>
+    <div
+      class="text-red fixed right-0 left-0 m-4 p-4 rounded-2xl bg-white h-48 shadow-2xl"
+    >
       <slot></slot>
     </div>
   </div>
