@@ -3,7 +3,7 @@ import { arc } from "d3";
 
 // const d = arcpath(0, 10, 50, 100, 4);
 // console.log(d);
-
+defineEmits(["select"]);
 const icons = ["https://api.iconify.design/iconoir:emoji-look-bottom.svg"];
 
 const hsl = (h, s, l = 50, a = 1) => `hsl(${h},${s}%,${l}%,${a})`;
@@ -40,7 +40,7 @@ console.log(sectors);
 </script>
 <template>
   <div>
-    <input class="block" type="range" v-model.number="hue" max="360" />{{
+    <!-- <input class="block" type="range" v-model.number="hue" max="360" />{{
       hue
     }}
     <input class="block" type="range" v-model.number="saturation" />{{
@@ -51,10 +51,10 @@ console.log(sectors);
     }}
     <input class="block" type="range" v-model.number="step" max="45" />{{
       step
-    }}
+    }} -->
     <svg width="300" height="300" class="block border border-blue-500">
       <g transform="translate(150,150)">
-        <g v-for="sector in sectors">
+        <g v-for="sector in sectors" @click="$emit('select', sector)">
           <path :d="sector.d" :fill="sector.fill" stroke="black" />
           <!-- <circle :cx="sector.point.x" :cy="sector.point.y" r="2" /> -->
           <image
