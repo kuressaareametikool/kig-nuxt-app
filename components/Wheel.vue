@@ -36,8 +36,15 @@ console.log(sectors);
     <g transform="translate(150,150)">
       <g v-for="sector in sectors">
         <path :d="sector.d" :fill="sector.fill" stroke="black" />
-        <circle :cx="sector.point.x" :cy="sector.point.y" r="2" />
-        <image :x="sector.point.x" :y="sector.point.y" :href="icons[0]" />
+        <!-- <circle :cx="sector.point.x" :cy="sector.point.y" r="2" /> -->
+        <image
+          :x="sector.point.x"
+          :y="sector.point.y"
+          :href="icons[0]"
+          :transform-origin="sector.point.x + ' ' + sector.point.y"
+          transform="scale(1.5) translate(-8,-8)"
+        />
+        <!-- <text :x="sector.point.x" :y="sector.point.y">Hello</text> -->
       </g>
       <!-- <path :d="d2" stroke="red" fill="none" /> -->
     </g>
