@@ -5,22 +5,19 @@ const options = [
   {
     title: "Õnnelik",
     fill: "#ffaaaa",
-    options: [{ title: "Rahulolev" }, { title: "Roomus" }],
+    icon: "https://api.iconify.design/iconoir:3d-add-hole.svg",
   },
   {
     title: "Elevil",
     fill: "yellow",
-    options: [{ title: "Optimistlik" }, { title: "Ergas" }],
   },
   {
     title: "Üllatunud",
     fill: "red",
-    options: [{ title: "Segaduses" }, { title: "Kergendunud" }],
   },
   {
     title: "Mures",
     fill: "green",
-    options: [{ title: "Ebakindel" }, { title: "Hirmul" }],
   },
   {
     title: "Vihane",
@@ -53,28 +50,16 @@ const onSelect = (sector) => (selectedSector = sector);
 </script>
 
 <template>
-  <div
-    class="flex items-center justify-center border-4 border-red-500 text-red-400 h-full"
-  >
+  <div class="flex items-center justify-center h-full">
     <div>
       <TestWheel>
         <TestSlices
           @select="onSelect"
           :options="options"
-          :inner="0"
-          :outer="120"
-        />
-        <TestSlices
-          @select="onSelect"
-          :options="options2"
-          :inner="121"
-          :outer="240"
-        />
-        <TestSlices
-          @select="onSelect"
-          :options="options3"
-          :inner="241"
-          :outer="350"
+          :inner="50"
+          :outer="150"
+          :corner="5"
+          :padding="2"
         />
       </TestWheel>
       You selected {{ selectedSector?.title }}
