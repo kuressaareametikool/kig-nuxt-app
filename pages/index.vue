@@ -63,7 +63,20 @@ const onSelect = (sector) => (selectedSector = sector);
     class="flex items-center justify-center border-4 border-red-500 text-red-400 h-full"
   >
     <div>
-      <ColorWheel @select="onSelect" :options="options1" />
+      <TestWheel>
+        <TestSlices
+          @select="onSelect"
+          :options="options1"
+          :inner="0"
+          :outer="150"
+        />
+        <TestSlices
+          @select="onSelect"
+          :options="options1"
+          :inner="151"
+          :outer="250"
+        />
+      </TestWheel>
       <!-- <EmojiWheel @select="onSelect" :options="options1" /> -->
       <!-- <EmojiWheel @select="onSelect" :options="options2" /> -->
       You selected {{ selectedSector?.title }}

@@ -4,8 +4,9 @@ import { arc } from "d3";
 const { options } = defineProps(["options"]);
 defineEmits(["select"]);
 
-const rotate = (deg) => `rotate(${deg})`;
 const translate = (x, y) => `translate(${x} ${y})`;
+const rotate = (deg) => `rotate(${deg})`;
+const scale = (s) => `scale(${s})`;
 const arcPath = (start, stop) =>
   arc()
     .padAngle(0)

@@ -1,3 +1,5 @@
+import { arc } from "d3";
+
 export function deg2rad(deg: number = 0): number {
   return (deg * Math.PI) / 180;
 }
@@ -50,3 +52,16 @@ export function range(from: number, to: number, step: number = 1): number[] {
 }
 
 export const snap = (val, step) => Math.round(val / step) * step;
+
+export const translate = (x, y) => `translate(${x} ${y})`;
+export const rotate = (deg) => `rotate(${deg})`;
+export const scale = (s1, s2) => `scale(${s1} ${s2})`;
+
+export const arcPath = (start, stop, inner = 0, outer = 100, corner = 0) =>
+  arc()
+    .padAngle(0)
+    .startAngle(deg2rad(start))
+    .endAngle(deg2rad(stop))
+    .innerRadius(inner)
+    .outerRadius(outer)
+    .cornerRadius(corner)();
