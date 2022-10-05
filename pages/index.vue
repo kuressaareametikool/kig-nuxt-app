@@ -1,7 +1,7 @@
 <script setup>
 definePageMeta({ layout: "default" });
 
-const options1 = [
+const options = [
   {
     title: "Õnnelik",
     fill: "#ffaaaa",
@@ -25,7 +25,6 @@ const options1 = [
   {
     title: "Vihane",
     fill: "#ffaaaa",
-    options: [{ title: "E" }, { title: "Vaenulik" }],
   },
   {
     title: "Kurb",
@@ -41,18 +40,13 @@ const options1 = [
   },
 ];
 
-const options2 = [
-  {
-    title: "Sad",
-    fill: "red",
-    icon: "https://api.iconify.design/iconoir:emoji-look-bottom.svg",
-  },
-  {
-    title: "Green",
-    fill: "green",
-    icon: "https://api.iconify.design/iconoir:emoji-look-bottom.svg",
-  },
-];
+const options2 = options
+  .map((o) => o.options || [{ title: "Some" }, { title: "Thing" }])
+  .flat();
+
+const options3 = options2
+  .map((o) => [{ title: "Some" }, { title: "Thing" }])
+  .flat();
 
 const selectedSector = $ref();
 const onSelect = (sector) => (selectedSector = sector);
@@ -66,18 +60,24 @@ const onSelect = (sector) => (selectedSector = sector);
       <TestWheel>
         <TestSlices
           @select="onSelect"
-          :options="options1"
+          :options="options"
           :inner="0"
-          :outer="150"
+          :outer="120"
         />
         <TestSlices
           @select="onSelect"
-          :options="options1"
-          :inner="151"
-          :outer="250"
+          :options="options2"
+          :inner="121"
+          :outer="240"
+        />
+        <TestSlices
+          @select="onSelect"
+          :options="options3"
+          :inner="241"
+          :outer="350"
         />
       </TestWheel>
-      <!-- <EmojiWheel @select="onSelect" :options="options1" /> -->
+      <!-- <EmojiWheel @select="onSelect" :options="options" /> -->
       <!-- <EmojiWheel @select="onSelect" :options="options2" /> -->
       You selected {{ selectedSector?.title }}
     </div>

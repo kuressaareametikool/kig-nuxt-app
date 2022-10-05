@@ -17,7 +17,7 @@ const sectors = options.map((option, i) => {
   const fill = hsl(currentAngle, 100, 50);
   const flip = currentAngle >= 90 && currentAngle < 270;
   const transform = [
-    rotate(currentAngle + sector / 2),
+    rotate(currentAngle + sector / 2 - 90),
     translate(sectorMiddleRadius, 0),
     scale(flip ? -1 : 1, flip ? -1 : 1),
   ].join();
@@ -25,12 +25,32 @@ const sectors = options.map((option, i) => {
 });
 </script>
 <template>
-  <g>
-    <g v-for="sector in sectors" @click="$emit('select', sector)">
-      <path :d="sector.d" :fill="sector.fill" opacity="0.5" />
-      <circle :cx="sector.point.x" :cy="sector.point.y" r="2" />
+  <g class="rotate(90)">
+    <g v-for="(sector, i) in sectors">
+      <path
+        :d="sector.d"
+        :fill="sector.fill"
+        opacity="0.5"
+        @click="$emit('select', sector)"
+      />
+      <!-- <text
+        style="pointer-events: none"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        :transform="sector.transform"
+      >
+        {{ sector.title }}
+      </text> -->
+      <!-- <circle
+        :cx="sector.point.x"
+        :cy="sector.point.y"
+        r="20"
+        fill="none"
+        stroke="black"
+        opacity="0.1"
+      /> -->
     </g>
-    <g v-for="sector in sectors" @click="$emit('select', sector)">
+    <g v-for="sector in sectors">
       <text
         style="pointer-events: none"
         dominant-baseline="middle"
