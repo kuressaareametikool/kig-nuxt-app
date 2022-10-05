@@ -3,35 +3,40 @@ definePageMeta({ layout: "default" });
 
 const options1 = [
   {
-    title: "First",
+    title: "Õnnelik",
     fill: "#ffaaaa",
+    options: [{ title: "Rahulolev" }, { title: "Roomus" }],
   },
   {
-    title: "Happy",
+    title: "Elevil",
     fill: "yellow",
+    options: [{ title: "Optimistlik" }, { title: "Ergas" }],
   },
   {
-    title: "Sad",
+    title: "Üllatunud",
     fill: "red",
+    options: [{ title: "Segaduses" }, { title: "Kergendunud" }],
   },
   {
-    title: "Green",
+    title: "Mures",
     fill: "green",
+    options: [{ title: "Ebakindel" }, { title: "Hirmul" }],
   },
   {
-    title: "First",
+    title: "Vihane",
     fill: "#ffaaaa",
+    options: [{ title: "E" }, { title: "Vaenulik" }],
   },
   {
-    title: "Happy",
+    title: "Kurb",
     fill: "yellow",
   },
   {
-    title: "Sad",
+    title: "Hooliv",
     fill: "red",
   },
   {
-    title: "Green",
+    title: "Armastav",
     fill: "green",
   },
 ];
