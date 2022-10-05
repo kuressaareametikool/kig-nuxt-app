@@ -3,7 +3,9 @@ const {
   options,
   inner = 0,
   outer = 100,
-} = defineProps(["options", "inner", "outer"]);
+  corner = 0,
+  padding = 0,
+} = defineProps(["options", "inner", "outer", "corner", "padding"]);
 defineEmits(["select"]);
 
 const sectors = options.map((option, i) => {
@@ -12,7 +14,14 @@ const sectors = options.map((option, i) => {
   const currentAngle = i * sector;
   const sectorMiddleRadius = inner + (outer - inner) / 2;
 
-  const d = arcPath(currentAngle, currentAngle + sector, inner, outer);
+  const d = arcPath(
+    currentAngle,
+    currentAngle + sector,
+    inner,
+    outer,
+    corner,
+    padding
+  );
   const point = polar(currentAngle + sector / 2, sectorMiddleRadius);
   const fill = hsl(currentAngle, 100, 50);
   const flip = currentAngle >= 90 && currentAngle < 270;
@@ -51,7 +60,16 @@ const sectors = options.map((option, i) => {
       /> -->
     </g>
     <g v-for="sector in sectors">
+      <image
+        v-if="sector.icon"
+        :x="sector.point.x"
+        :y="sector.point.y"
+        :href="sector.icon"
+        :transform-origin="sector.point.x + ' ' + sector.point.y"
+        transform="scale(1.5) translate(-8,-8)"
+      />
       <text
+        v-else
         style="pointer-events: none"
         dominant-baseline="middle"
         text-anchor="middle"

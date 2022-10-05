@@ -57,11 +57,19 @@ export const translate = (x, y) => `translate(${x} ${y})`;
 export const rotate = (deg) => `rotate(${deg})`;
 export const scale = (s1, s2) => `scale(${s1} ${s2})`;
 
-export const arcPath = (start, stop, inner = 0, outer = 100, corner = 0) =>
+export const arcPath = (
+  start,
+  stop,
+  inner = 0,
+  outer = 100,
+  corner = 0,
+  padding = 0
+) =>
   arc()
     .padAngle(0)
     .startAngle(deg2rad(start))
     .endAngle(deg2rad(stop))
     .innerRadius(inner)
     .outerRadius(outer)
-    .cornerRadius(corner)();
+    .cornerRadius(corner)
+    .padAngle(deg2rad(padding))();
